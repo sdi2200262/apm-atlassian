@@ -40,7 +40,7 @@ Use kebab-case names; each skill's `name` matches its directory. Descriptions id
 Build targets select an assistant (`agents` or `claude`) and format (`multi-skill` or `single-skill`). The assistant determines assistant-specific text; configured directories determine installation paths.
 
 - Multi-skill targets install numbered and shared skills under `skills/`, with guides under `apm-guides/`, rooted at `.claude/` or `.agents/`.
-- Single-skill targets are a research preview. They install one `skills/apm/SKILL.md` entry. Initiation sources become `roles/{planner,manager,worker}.md`. The six guides and Handoff, recovery and summary instructions go under `guides/`; communication and bus support go under `communication/`. Reference documents have no skill frontmatter. Check Tasks/Reports wrappers are omitted; the entry routes to the owning receipt procedure.
+- Single-skill targets are a research preview. They install one `skills/apm/SKILL.md` entry. Initiation sources become `roles/{planner,manager,worker}.md`. The core guides, Atlassian guide and Handoff, recovery and summary instructions go under `guides/`; communication and bus support go under `communication/`. Reference documents have no skill frontmatter. Check Tasks/Reports wrappers are omitted; the entry routes to the owning receipt procedure.
 
 All targets use the same workflow sources, workspace-root `AGENTS.md` and initial `.apm/` artifacts. The build maps paths and strips reference frontmatter without rewriting workflow prose.
 

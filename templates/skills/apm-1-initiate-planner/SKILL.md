@@ -37,12 +37,18 @@ Read other APM files only when these files point you to them. Use the context su
 
 ## 2. Workspace Survey
 
+Start at the session root, the working copy of the team's Bitbucket repository for APM files.
+
 Your startup responsibilities are:
 
 1. Survey root folders, repositories and planning materials. Where version control is present, check repository status, branches, recent commits and conventions as applicable. Flag unfinished work, stale worktrees or orphaned branches for the User. Check `.apm/archives/`, `AGENTS.md`, READMEs and general docs.{CLAUDE_ONLY: Read an existing workspace-root `CLAUDE.md` or `.claude/CLAUDE.md` too.} Identify working and reference repositories, whether one, several or none. Leave source exploration and deeper research to the guide.
 2. For an empty workspace, continue discovery in §3 with supplied context and investigate or clarify gaps. Otherwise read relevant materials and archives within scope and check which are current. Establish source authority from User instructions and current evidence; ask when unclear. One document naming another authoritative does not settle its authority.
+3. Agree on the Atlassian site, Confluence space, Jira project, audience and session name. Agree which Jira statuses mean that a Stage is available to claim, in progress or complete. Check access per `{GUIDE_PATH:atlassian}` §1. Confirm with the User that teammates can access the Confluence pages as needed, that new Epics can be left unassigned and that teammates can claim and transition them.
+4. Confirm the installed targets cover the team. For a CLI install, have the User run `apm add` for any missing compatible targets.
 
 ## 3. Planning
+
+During Context Gathering, agree on the shared APM branch and where the working repositories sit relative to the session root.
 
 1. Use the confirmed authoritative documents and follow `{GUIDE_PATH:context-gathering}` until the User approves your understanding summary.
 2. Follow `{GUIDE_PATH:work-breakdown}` to write the Spec and Plan, each approved before the next, then resolve any proposed updates to `AGENTS.md`.
@@ -53,8 +59,8 @@ After the Spec and Plan are approved and any proposed updates to `AGENTS.md` are
 
 1. For each Worker listed in the Plan, create `.apm/bus/<agent-slug>/` with empty `task.md`, `report.md` and `handoff.md`. Create `.apm/bus/manager/` with only an empty `handoff.md`.
 2. Report the result of the `AGENTS.md` review and why you changed or kept the guidance.
-3. Tell the User the documents and Message Bus are ready.
-4. Tell the User to open a new conversation and {START_MANAGER}. If the User wants to switch assistants, check `{OTHER_SKILLS_DIR}` and tell them how to start the Manager with the APM skill installed there.
+3. Stage only the shared session files, agreed workspace instructions and installed APM files. For a CLI install, use the file list in `.apm/metadata.json` and include that file. Keep `.apm/worktrees/`, `.apm/archives/` and personal assistant settings local. Check what is staged, then commit and push to the shared branch.
+4. Tell the User the documents and Message Bus are ready. Give the User the Confluence links, Stage 1 Epic, Bitbucket repository and branch to pass to the teammate running Stage 1. That teammate claims the Epic and clones or pulls the branch. In a new chat at the session root, have them {START_MANAGER}. For a different assistant, check `{OTHER_SKILLS_DIR}` and explain how to start the Manager there.
 
 ## 5. Subagents
 

@@ -36,14 +36,14 @@ Use the agent ID the User supplied to identify your Worker. If it is missing, as
 1. Match the agent ID to a folder in `.apm/bus/` per `{SKILL_PATH:apm-communication}` §3.2. This is your bus folder.
 2. Keep the agent ID and bus folder as your identity for this conversation. Every Task Prompt names the Worker it is for, and you check that name against this identity.
 3. Check that your bus folder holds its three files: `task.md` for Task Prompts from the Manager, `report.md` for your Task Reports, and `handoff.md` for a Handoff from an earlier conversation of yours.
-4. If `handoff.md` has content, continue with §1.2. Otherwise introduce yourself as a Worker in the session and confirm your agent ID. If `task.md` holds a Task Prompt, start it per §2. Otherwise explain how the next Task Prompt will reach you and wait for it.
+4. For a teammate handoff, if `handoff.md` is empty or `task.md` or `report.md` has content, stop and check the session root and handoff with the User. If `handoff.md` has content, continue with §1.2. Otherwise introduce yourself as a Worker in the session and confirm your agent ID. If `task.md` holds a Task Prompt, start it per §2. Otherwise explain how the next Task Prompt will reach you and wait for it.
 
 ### 1.2 Initiation After Handoff
 
 If `handoff.md` contains a Handoff Prompt, continue the previous Worker's work:
 
-1. Read the Handoff Prompt in `handoff.md`. It gives your conversation number and names the Handoff Log and Task Logs to read.
-2. Read the Handoff Log and those Task Logs: your own relevant logs from the current Stage, plus dependency logs named in the current Task Prompt as needed to resume.
+1. Read the Handoff Prompt in `handoff.md`. It gives your conversation number and names the Handoff Log and Task Logs to read. For a teammate handoff, verify its Worker ID and conversation number against the details the User gives you. Resolve missing or mismatched details before continuing.
+2. Read the Handoff Log and those Task Logs: your own relevant logs from the current Stage, plus dependency logs named in the current Task Prompt as needed to resume. For a teammate handoff, also read any relevant earlier Task Logs named in the Handoff Prompt.
 3. Verify progress, branches, integration and pending work against `task.md`, deliverables and any version control state. Resume from checked current state, preserving User-held work. Ask about gaps the records cannot settle.
 4. Clear `handoff.md`.
 5. Tell the User you are continuing as this Worker in the same APM session. Explain which Task or batch you are resuming or waiting for and what you’ll do next. Mention relevant context gaps.

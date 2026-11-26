@@ -20,17 +20,17 @@ Read `{SKILL_PATH:apm-communication}` if it is not already loaded.
 2. Check the recorded state of active Tasks, including subagent and User-performed work. Use the Manager’s or User’s confirmation that active work has stopped when it is still current. Otherwise ask the User to pause affected work and collect its current state before continuing.
 3. Check the planning documents, Tracker and Stage summaries against the latest relevant Task Logs, Handoff Logs, deliverables and any version control state. Include unfinished worktrees where present. Follow earlier-attempt links as needed. Record material differences, validation gaps and any uncertainty from reconstructed context, with sources.
 4. Write `.apm/session.summary.md` per §2.1. Count unique Task IDs from the session records and ignore copies in worktrees. Summarize conclusions where they belong and link the evidence. Say which work you remember and which you reconstructed from files or a compaction summary. In a new chat, all of it comes from the files.
-5. Link the saved summary, briefly state its conclusions and invite corrections. Apply any corrections the User gives.
-6. If the User chose a summary only, stop after reporting it. If they have not agreed to archival with its effects explained, explain what it would do in this session and ask whether to proceed:
+5. Commit and push the summary to the shared APM branch. Link the saved summary, briefly state its conclusions and invite corrections. Apply any corrections the User gives and push them.
+6. If the User chose a summary only, stop after reporting it. If `.apm/metadata.json` is absent, give the User the saved Bitbucket branch. Explain that a later session can start in a directory with no active APM files and use those records as context, then stop. If they have not agreed to archival with its effects explained, explain what it would do in this session and ask whether to proceed:
    - The CLI copies active session records from `.apm/` to the same relative paths under `.apm/archives/<name>/`.
    - Any linked Git worktrees under `.apm/worktrees/` move to the archive’s `worktrees/` directory at the same relative paths. They keep their uncommitted changes and links to their source repositories.
    - The CLI verifies the moves before clearing active APM files and installed instructions. `apm init` reinstalls the instructions.
    - Other working copies outside `.apm/` and ordinary project-directory changes stay in place. Task and branch states remain unchanged.
 
    Proceed only with the User's explicit agreement.
-7. Ask for an archive name, or use the default dated name. Run `apm archive --force`, or `apm archive --force --name <name>`. Continue only after the CLI confirms preservation and archival succeeded. If it reports a failure, show the obstacle and current paths, and follow its recovery guidance.
+7. Preserve the saved Bitbucket session branch. Ask for an archive name, or use the default dated name. Run `apm archive --force`, or `apm archive --force --name <name>`. Continue only after the CLI confirms preservation and archival succeeded. If it reports a failure, show the obstacle and current paths, and follow its recovery guidance.
 8. Read `.apm/archives/index.md`, creating it per §2.2 if it is missing or malformed, and add the new archive at the top of its table.
-9. Tell the User the archive's path and any relocated worktrees the CLI reported. To start a new session, the User runs `apm init` (or `apm custom`) and then starts a new Planner conversation; the next Planner can use the archives.
+9. Tell the User the archive's path and any relocated worktrees the CLI reported. To start a new session, the User runs `apm init` (or `apm custom`) and then starts a new Planner conversation; the next Planner can use the archives. Use a new branch for any tracked changes from the local archive or later session.
 
 ### 1.1 Subagents
 

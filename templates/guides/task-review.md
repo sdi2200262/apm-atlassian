@@ -59,8 +59,12 @@ You may correct one Task, add a dependency or an isolated Spec point, or propose
 
 1. Identify the change, its evidence, affected documents and dependent or active work. Check how the change affects ongoing work and coordinate any needed adjustment with whoever is performing it. Preserve valid progress, Task identity, current attempt and workspace.
 2. Carry forward decisions already agreed with the User and resolve any further approval needed. If further approval is needed, record the pending decision in the Tracker, present the proposal and wait; unrelated work may continue.
+
+   If an approved change affects Confluence or Jira, note the change and affected items in Tracker Notes before editing the planning documents.
+
 3. Revise affected Spec and Plan sections in place, replacing superseded wording. Check related sections in both documents and update any the change affects. Record agreed changes to ongoing User involvement and coordination in the Plan, and update authorized workspace guidance. For new or revised Tasks, follow the prescribed format and give concrete work, outputs and checks. Reflect agreed involvement in responsibilities, Task size and review points. When reassigning, consider progress, retained knowledge and coordination demands. Preserve unrelated content.
 4. Align Task instructions with the updated documents. Update affected Tracker entries in place, including next actions and the reason for changes that affect coordination (§8.2). Preserve consequential decisions in the Stage summary (§8.4) and update the Index when a change matters to later work (§8.3). Complete these updates before sending revised instructions, continuing affected work, waiting or handing off. Update your subagents directly. Ask the User to deliver Worker corrections per `{GUIDE_PATH:task-assignment}` §5.1, or use a follow-up for a reported attempt. Coordinate User-performed portions with the User.
+5. Update the affected Epics and publish the affected Confluence pages per `{GUIDE_PATH:atlassian}` §§2.1–2.2. For a removed Stage, record the disposition in Jira and move its Epic out of claimable statuses using the agreed workflow. Keep its link with the decision. Clear each publication note when its update is confirmed. Before retrying, verify the agreed Markdown edits and check what already succeeded.
 
 For work cancelled, superseded or deferred beyond the session, retain its ID, disposition, reason and any replacement. Reconcile requirements, tables, dependencies and instructions so obsolete work is no longer actionable. After scope agreement, mark it Done and record its disposition in the Tracker and Stage summary, distinct from delivery. Preserve existing logs; do not invent execution logs for unperformed work.
 
@@ -87,10 +91,22 @@ When every Task in a Stage is Done and no follow-up Task is pending:
 2. For those checks and gaps, verify combined deliverables at the work's validation level. Keep reference inputs separate from generated results and preserve usable evidence through cleanup. Resolve questions within scope; add Tasks for fixes to Done work or ask where scope is unclear.
 3. Use Task Logs and the Tracker to account for consequential findings, decisions, accepted limits and unrun checks. Cite their sources. Reuse reviewed logs still in context and reread those that changed or are no longer available.
 4. Write or update the Stage summary per §8.4. Record the Stage outcome in the Index. Update Index Notes with what later work needs (§8.3). Keep Tracker Notes current for any coordination that carries forward (§8.2).
-5. Once all Tasks are Done and required integration and verification are complete, replace their rows with `**Stage N:** Complete — [Summary](memory/stage-<NN>/stage-<NN>.summary.md)`. The summary retains accepted Partial outcomes and limits.
-6. Briefly report the Stage and actual result, verification, remaining limits and consequential carryover. Explain the next Stage's work and ask explicitly before starting it, unless a different arrangement was explicitly agreed. Do not infer permission from approval of the overall Plan. Resolve acceptance of remaining limits separately where needed.
 
-After agreement to advance, add the next Stage's Tasks per §8.1 and dispatch per Task Assignment. When every Stage is complete, follow the Manager's session-completion responsibilities.
+   For Git work, record the repositories, branches and exact commits needed by later work in the summary.
+
+5. Once all Tasks are Done and required integration and verification are complete, replace their rows with `**Stage N:** Complete — [Summary](memory/stage-<NN>/stage-<NN>.summary.md)`. The summary retains accepted Partial outcomes and limits.
+6. Resolve pending Atlassian updates for the Stage. Make the recorded work commits fetchable on their agreed branches. Commit and push the Stage records to the shared APM branch, then close the Epic per `{GUIDE_PATH:atlassian}` §3. If a push is rejected because the branch advanced, fetch and check the changes and ownership before reconciling. If a step fails, record the blocker in Tracker Notes and resolve it before reporting completion or continuing.
+7. Briefly report the Stage and actual result, verification, remaining limits and consequential carryover. Resolve acceptance of remaining limits separately where needed.
+
+When every Stage is complete, follow the Manager's session-completion responsibilities. Otherwise continue with §7.1.
+
+### 7.1 Start a Stage
+
+At a Stage boundary, if the User chooses a different teammate, follow `{SKILL_PATH:apm-6-handoff-manager}` §4.1 and stop here.
+
+The approval at Manager startup covers Stage 1. For a later Stage, explain the work and ask explicitly before starting unless that Stage was already approved or a different arrangement was explicitly agreed. Do not infer permission from approval of the overall Plan. Record the Stage and the approval, approver or agreed arrangement in Tracker Notes, or record that approval is pending and wait.
+
+Verify the Jira claim per `{GUIDE_PATH:atlassian}` §3 and finish pending publication for the Stage. Move the Epic to the agreed in-progress status. Then add the Stage Tasks per §8.1 and clear resolved Notes in the same Tracker edit. Dispatch per Task Assignment.
 
 ## 8. Formats
 

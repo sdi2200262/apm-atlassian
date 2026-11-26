@@ -19,18 +19,22 @@ Use this cycle for the Spec, then the Plan.
 1. Present the proposed organization and consequential choices, reasons and assumptions.
 2. In the same turn, read the target file and write the draft using its format in §5. Reuse material that fits after checking it against current sources and decisions. Distinguish agreements, recommendations and open choices.
 3. Check the saved file's section order and required fields against its format. Use §2 or §3 to check the content against the approved understanding and any document already approved for this session.
-4. Link the file. Briefly summarize its contents per §2 or §3 and explain the reasons for consequential choices. Say what comes next, ask for explicit approval and wait.
+4. Publish the review draft and any earlier document changed in this revision per `{GUIDE_PATH:atlassian}` §2.1. Once the published copy is confirmed, link the file and its Confluence page. Briefly summarize its contents per §2 or §3 and explain the reasons for consequential choices. Say what comes next, ask for explicit approval and wait.
 5. Apply corrections to all affected documents, including earlier ones. Repeat steps 3 and 4 for revisions.
 
-After Plan approval, resolve any `AGENTS.md` changes per §4.
+After Plan approval, create the Stage Epics, then refresh and verify the published links per `{GUIDE_PATH:atlassian}` §§2.1–2.2. Complete publication before passing the session to the Manager. Resolve any `AGENTS.md` changes per §4.
 
 ## 2. Spec
 
 Write `.apm/spec.md` per §5.1 from the approved understanding of what the session will deliver. Reserve delivery arrangements for the Plan (§1).
 
+In Notes, record the Atlassian site, Confluence space, Jira project, intended audience and unique session name. Name the Jira statuses for claimable, in progress and complete. Use the agreed review arrangements to identify who can approve Stage advancement.
+
 Group requirements and design choices by subject. Draw on the full range of Markdown, including headings, paragraphs, lists and tables. Choose the forms that make each subject easy for the User to review and the Manager to find during implementation. Name the working targets and authoritative sources. Record agreed behavior, output formats, schemas, interface contracts, constraints and acceptance criteria with the decisions they concern. Include brief reasons and relevant alternatives. Name who will settle open choices.
 
 Record the session's version control agreement, including branch and commit conventions and constraints on work locations, commits, integration, publication and APM file tracking. Carry its effects on work and sequencing into the Plan.
+
+Include the shared APM branch and the paths to working repositories relative to the session root in that agreement.
 
 Write each note as a separate list item. Frame notes as observations, not instructions. Include context that applies across design subjects, such as shared assumptions, reasons, open choices or later-session scope. For a relevant alternative, explain why it still matters, when it applies and whether the choice is open or settled.
 
@@ -103,6 +107,8 @@ The Spec is `.apm/spec.md`.
 
 The Plan is `.apm/plan.md`.
 
+Leave Jira Epic cells empty until the Plan is approved and the Epics are created.
+
 ```markdown
 # APM Plan
 
@@ -117,9 +123,9 @@ The Plan is `.apm/plan.md`.
 
 ## Stages
 
-| Stage | Name | Tasks | Agents |
-|-------|------|-------|--------|
-| 1 | <Name> | <Task IDs> | <Assigned agents> |
+| Stage | Name | Tasks | Agents | Jira Epic |
+|-------|------|-------|--------|-----------|
+| 1 | <Name> | <Task IDs> | <Assigned agents> | [<key>](<Epic URL>) |
 
 ## Notes
 

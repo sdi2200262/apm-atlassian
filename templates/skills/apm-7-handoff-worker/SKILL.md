@@ -39,6 +39,8 @@ Write the Handoff Prompt per §5.2 to `.apm/bus/<agent-slug>/handoff.md`. Its Ne
 
 Record what work the User holds, any assistance needed, where to resume and what allows work to resume. Carry forward agreed review points, pending decisions and accepted limits with evidence links.
 
+For a teammate handoff, also link relevant Task Logs from earlier Stages when needed.
+
 ## 4. Continuation Instructions
 
 Give a small chat recap of the work and context being passed on, pending decisions or checks, and the next action. Explain how the User starts a new Worker conversation with your agent ID; it finds the Handoff Prompt. You may link the files for optional review, but do not require inspection or approval.

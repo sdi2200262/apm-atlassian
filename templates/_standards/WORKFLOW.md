@@ -16,6 +16,10 @@ Work structure and interaction are distinct. The Spec, ordered Stages, Tasks, de
 
 Workers do not read the Spec, Plan, Tracker or Index unless the User widens their scope. The Manager supplies relevant requirements, involvement arrangements and dependency context in self-contained Task Prompts. Native subagents remain within their parent's scope and are distinct from APM Workers and bus delivery. Task Assignment's native-assignment subsection supplies shared delegation guidance to the roles that need it; role files state delegation policy and the relevant procedure supplies its particular context.
 
+The Spec and Plan are reviewable in Confluence. Teammates claim Stages in Jira, hand off between Stages, and share APM session documents through Bitbucket.
+
+Each assistant needs Atlassian MCP. The Planner and Manager use the direct Confluence and Jira tools per the Atlassian guide.
+
 Agents follow the prescribed workflow, applicable workspace instructions and permissions unless the User explicitly agrees to a specific change. Requirements, defaults and permitted execution choices remain distinguishable. Choices within agreed authority do not need new approval. Approval requests identify the exact decision and consequential effects in plain language. Agreement covers only what was clearly presented and explicitly accepted; silence, continued discussion and approval of related work do not establish wider agreement. Existing authorization applies within its actual scope, while destructive or irreversible actions require confirmation of their consequences. Required approvals and agreed review points remain in force.
 
 Agents keep current instructions and records aligned with checked progress and the latest agreed decisions. They revise affected content within their scope at consequential changes and pauses, before dependent work or Handoff, combining related updates and passing changes outside their scope through the agreed coordination mechanism.
@@ -44,6 +48,8 @@ Implementation follows §7. The first Manager introduces taking over the session
 
 Each Stage ends with a brief account of its result, verification, remaining limits and consequential carryover. The Manager waits for explicit agreement before starting the next Stage unless a different arrangement was explicitly agreed. Completing required records and reviews does not require separate approval at every step.
 
+Each Stage has one Jira Epic. Teammates agree who will claim it, and one teammate coordinates the shared session at a time. The Manager checks Jira ownership before taking over or resuming a Stage. It records the Stage approval and verifies the in-progress status before dispatch. At completion it makes the required work commits fetchable, pushes the Stage records, then closes the Epic. One teammate can claim consecutive Stages and keep the existing conversations. A change of teammate follows §8.1 between Stages.
+
 Implementation ends when all Stages complete or the User stops early; closure follows §8.3. Later sessions use prior results checked against current state, with scope and approach agreed anew and proposed sequences remaining tentative.
 
 ## 3. Planning Documents
@@ -64,7 +70,11 @@ For Claude, when both workspace files exist, `CLAUDE.md` imports `AGENTS.md` out
 
 ### 3.4 Version Control
 
+The session root is the working copy of the team's Bitbucket repository for APM files. Keep the APM repository separate from the other repositories in the workspace. The team installs its assistant targets once for the session. Before the Manager starts, the Planner shares the installed instructions, CLI metadata when present, session files and agreed workspace instructions. Worktrees, local archives and personal assistant settings stay local. The version-control choices below apply to the work itself.
+
 The Planner checks repository history and workspace instructions. When discussing how the work will proceed, it agrees with the User on whether and how to use version control. If using it, the Planner proposes applicable branch naming and commit message conventions with examples and explains departures from repository practice. The agreement covers constraints on work locations, commit and integration timing, and APM file tracking. Durable conventions belong in `AGENTS.md`, the session agreement in the Spec, coordination implications in the Plan, and live locations and actions in the Tracker.
+
+Shared records name the repository, use paths relative to the session root, and give branches or commits teammates can fetch.
 
 When the session uses version control, the Manager explains the proposed setup in its first understanding (§2.2) and applies it after approval, including agreed APM file tracking. The Manager prepares workspaces and handles integration, pushing and cleanup.
 
@@ -80,6 +90,8 @@ Commits follow agreed conventions and timing and may span Tasks. Delegated instr
 ### 3.5 Planning Changes
 
 The Manager aligns the planning documents, `AGENTS.md` and affected assignments before affected work proceeds. When the User agrees to change ongoing involvement or another arrangement that belongs in the Plan, the Manager records the current agreement there and replaces any previous wording in place. Revisions reflect agreed User involvement through responsibility, size and review points, considering progress, retained knowledge and coordination demands.
+
+The Markdown Spec and Plan are authoritative. Share only content agreed for the destination's audience. The Manager updates the Confluence copies and Epic links after agreed changes. It tracks any pending publication and retries before affected dispatch or Stage publication. Withdrawn Stages leave claimable Jira statuses.
 
 Work cancelled, superseded or deferred beyond the session retains its ID, reason and any replacement. The Manager reconciles requirements, tables, dependencies and instructions to withdraw obsolete work. It marks the Task Done only after scope agreement, distinguishing it from delivery in the Tracker and Stage summary. Existing logs remain; unperformed work gets no execution log. Pending decisions belong in the Tracker; consequential decisions and reasons remain in Memory.
 
@@ -177,6 +189,8 @@ Before drafting, the Planner identifies which parts of the approved understandin
 
 Document approvals follow §2.1. The Planner checks each saved document against its required format and the approved understanding. For approval, it links the file and briefly summarizes its contents and the reasons for consequential choices. At Spec review, it names the delivery agreements from the approved understanding reserved for the Plan. It checks that the relevant Tasks or Notes carry those agreements forward. At Plan review, it explains how the work and checks cover the approved Spec outcomes. Corrections carry into affected documents and revisions follow the same review.
 
+The Planner links Confluence drafts at each approval. After Plan approval, it creates the Stage Epics and links them to the Confluence pages per the Atlassian guide.
+
 The Planner reuses earlier material where it fits and is verified against current sources. Task responsibility, size and review points reflect agreed involvement, and User-performed work keeps its responsible agent.
 
 Both documents state requirements, constraints and agreements as facts and frame advice as observations or recommendations. Only assigned Task instructions direct an agent or the User to act. The Planner assumes the Manager knows the APM workflow. It records session-specific decisions, constraints and changes and links relevant procedures or documents when needed, without restating standard procedures or document purposes. Both documents use language the User can review. They record the technical choices and constraints the User specifies, and describe approaches at the depth the User wants to review. Where the User leaves choices open, the documents state required results, constraints and checks. They preserve consequential decisions and findings with brief reasons and sources where useful. The Manager uses the documents, their sources and the current workspace to establish the technical context needed for implementation. The implementing agents decide details left open within the agreed boundaries.
@@ -267,6 +281,8 @@ The outgoing agent gives a small chat recap of what passes on and how the User s
 
 The incoming Manager reads coordination records and needed Task Logs; the Worker reads its Handoff Log, latest relevant own logs from the current Stage and dependency logs needed to resume, following earlier-attempt links as needed. Both check records against current state, preserve User-held work, ask about gaps and clear the Handoff Bus. The Worker resumes with the current prompt’s log path or awaits delivery.
 
+A teammate handoff transfers coordination to another person between Stages using the existing Manager and Worker Handoffs. The Manager and each started Worker with future Tasks prepare their own Handoffs. The outgoing Manager shares the Git state and workspace setup needed to continue, pushes the handoffs, and ends work in the outgoing chats before the new teammate takes over. The incoming Manager starts from the shared APM branch, checks ownership and workspace setup, and preserves local work. The User starts continuing Workers under their existing IDs at the incoming Manager's session root before dispatch. Their Handoffs may refer to relevant Task Logs from earlier Stages. Stage approval still applies. Ordinary conversation Handoffs may occur within a Stage.
+
 ### 8.2 Recovery
 
 **Runtime:** `apm-9-recover`.
@@ -281,8 +297,10 @@ A new conversation may summarize without adopting a role; the Manager may summar
 
 At session close, the Manager updates Index Notes with any remaining information that may help in a later session and links to the evidence. The Manager then clears obsolete coordination notes and context from the Tracker, keeping the checked final state and what is needed to resume unfinished work.
 
-The Manager asks first about a saved Session Summary and then, in the same message, about archival with or without a summary. It explains how each would help the User or a later session. The agent that writes a summary links it, briefly presents its conclusions and applies any User corrections.
+The Manager pushes the final records to the shared APM branch.
 
-Archiving is optional and requires the User's approval. The agent explains what archival would do in this session before requesting approval and reuses prior approval that covered those effects. The CLI copies active session records from `.apm/` to the same relative paths under `.apm/archives/<name>/`. It moves linked Git worktrees from `.apm/worktrees/` to the archive’s `worktrees/` directory at the same relative paths and verifies the moves before clearing active APM files and installed instructions. Worktrees keep their uncommitted changes and links to their source repositories. Other working copies outside `.apm/` stay in place, as do ordinary project-directory changes. Failure preserves recoverable state and reports the paths needing attention. Completing Tasks, committing and merging are separate decisions.
+The Manager asks first about a saved Session Summary and, for a CLI-managed install, asks in the same message about archival with or without a summary. It explains how each would help the User or a later session. The agent that writes a summary pushes it to the shared branch, links it, briefly presents its conclusions and applies any User corrections.
+
+Archiving is optional and requires the User's approval. The agent explains what archival would do in this session before requesting approval and reuses prior approval that covered those effects. The CLI copies active session records from `.apm/` to the same relative paths under `.apm/archives/<name>/`. It moves linked Git worktrees from `.apm/worktrees/` to the archive’s `worktrees/` directory at the same relative paths and verifies the moves before clearing active APM files and installed instructions. Worktrees keep their uncommitted changes and links to their source repositories. Other working copies outside `.apm/` stay in place, as do ordinary project-directory changes. Failure preserves recoverable state and reports the paths needing attention. Completing Tasks, committing and merging are separate decisions. Keep the saved Bitbucket session branch intact when archiving or updating a local installation.
 
 When an agent archives a session, it adds an archive index entry linking to the saved summary or, without a summary, to the archive folder. The CLI lists archives from their metadata. A new installation starts another session; its Planner can use relevant archives after checking current evidence. Archive deletion asks for confirmation describing the files, worktrees and uncommitted work to be deleted; `-f` skips that confirmation. A failed deletion stops and warns that cleanup may be partial.
