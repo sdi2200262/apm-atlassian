@@ -1,0 +1,46 @@
+/**
+ * Manifest Generation Module
+ *
+ * Generates release manifest for CLI consumption.
+ *
+ * @module build/generators/manifest
+ */
+
+import { validateReleaseManifest } from '../../src/schemas/release.js';
+import { BuildError } from '../core/errors.js';
+
+/**
+ * Generates a release manifest for all targets.
+ *
+ * @param {Object} config - Build configuration.
+ * @param {string} version - Version string.
+ * @returns {Object} Release manifest object.
+ */
+export function generateReleaseManifest(config, version) {
+  const assistants = config.targets.map(target => {
+    const entry = {
+      id: target.id,
+      name: target.name,
+      bundle: target.bundleName
+    };
+    if (target.replaces !== undefined) entry.replaces = target.replaces;
+    if (target.conflictsWith !== undefined) entry.conflictsWith = target.conflictsWith;
+    if (target.postInstallNote) {
+      entry.postInstallNote = target.postInstallNote;
+    }
+    return entry;
+  });
+
+  const manifest = { version, assistants };
+  // Optional: CLI versions older than this refuse the release (only CLI v1.0.2 and later read it)
+  if (config.build?.minCliVersion !== undefined) {
+    // CLI 1.0.2 ignores a version it can't parse, so fail the build instead
+    if (!/^\d+\.\d+\.\d+$/.test(config.build.minCliVersion)) {
+      throw new Error(`build.minCliVersion "${config.build.minCliVersion}" must be a version such as 1.0.3`);
+    }
+    manifest.minCliVersion = config.build.minCliVersion;
+  }
+  const validation = validateReleaseManifest(manifest);
+  if (!validation.valid) throw BuildError.configInvalid(validation.errors);
+  return manifest;
+}

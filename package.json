@@ -1,0 +1,55 @@
+{
+  "name": "agentic-pm",
+  "version": "1.0.4",
+  "description": "Agentic Project Management CLI",
+  "scripts": {
+    "build": "node build/index.js",
+    "build:release": "node build/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdi2200262/agentic-project-management.git"
+  },
+  "keywords": [
+    "agentic",
+    "project-management",
+    "cli",
+    "apm"
+  ],
+  "author": "CobuterMan <haidemenoss@gmail.com>",
+  "contributors": [],
+  "license": "MPL-2.0",
+  "type": "module",
+  "files": [
+    "src/",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md"
+  ],
+  "bin": {
+    "apm": "src/index.js",
+    "agentic-pm": "src/index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/sdi2200262/agentic-project-management/issues"
+  },
+  "homepage": "https://github.com/sdi2200262/agentic-project-management#readme",
+  "engines": {
+    "node": "^18.17.0 || >=20.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "7.9.0",
+    "adm-zip": "0.6.1",
+    "axios": "1.20.0",
+    "chalk": "5.6.2",
+    "commander": "11.1.0",
+    "fs-extra": "11.3.2"
+  },
+  "devDependencies": {
+    "archiver": "^7.0.1",
+    "js-yaml": "^4.1.1"
+  }
+}
