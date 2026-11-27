@@ -13,7 +13,7 @@ workspace/
     .agents/        # Or .claude/ for Claude Code
 ```
 
-Set up [Atlassian MCP](https://support.atlassian.com/atlassian-ai-gateway/docs/get-started-with-the-atlassian-remote-mcp-server/) in each assistant. Once a release is available, install the team's assistant targets in the session root.
+Set up [Atlassian MCP](https://support.atlassian.com/atlassian-ai-gateway/docs/get-started-with-the-atlassian-remote-mcp-server/) in each assistant. Install the team's assistant targets in the session root.
 
 ```sh
 apm custom -r sdi2200262/apm-atlassian
